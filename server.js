@@ -12,7 +12,7 @@ const app = express();
 import dotenv from "dotenv";
 dotenv.config();
 const corsOptions = {
-  origin: process.env.CLIENT_URL, // The URL of your Vite frontend
+  origin: "*", // The URL of your Vite frontend
   optionsSuccessStatus: 200 // For legacy browser support
 };
 app.use(cors(corsOptions));
