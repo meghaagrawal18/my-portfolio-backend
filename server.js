@@ -17,6 +17,9 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 app.use(express.json());
+app.get("/", (req, res) => {
+  res.send("Backend is running smoothly! 🚀");
+});
 
 mongoose.connect("mongodb://localhost:27017/", {
   useNewUrlParser: true,
