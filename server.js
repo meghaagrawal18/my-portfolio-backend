@@ -15,17 +15,19 @@ const corsOptions = {
   origin: "*", // The URL of your Vite frontend
   optionsSuccessStatus: 200 // For legacy browser support
 };
+
+const connectToMongo= async ()=>{
+await mongoose.connect(process.env.MONGODB_URI).then(() => console.log("✅ MongoDB connected")).catch((err) => console.error(err));
+}
+
+connectToMongo()
+
 app.use(cors(corsOptions));
 app.use(express.json());
 app.get("/", (req, res) => {
   res.send("Backend is running smoothly! 🚀");
 });
 
-mongoose.connect("mongodb://localhost:27017/", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-}).then(() => console.log("✅ MongoDB connected"))
-  .catch((err) => console.error(err));
 
 // Example route for home
 app.get("/api/home", async (req, res) => {
